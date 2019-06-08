@@ -1,0 +1,47 @@
+---
+
+slurm_ohpc_version: https://bootler.lsd.di.uminho.pt/ohpc-release-1.3-1.el7.x86_64.rpm
+slurm_logdir: /var/log/slurm
+slurm_user: slurm
+slurm_group: slurm
+
+slurm_config:
+  AuthType: auth/munge
+  SlurmctldHost: instance
+  MailProg: /usr/bin/mail
+  MpiDefault: none
+  ProctrackType: proctrack/cgroup
+  ReturnToService: 0
+  SlurmctldPidFile: /var/run/slurmctld.pid
+  SlurmdPidFile: /var/run/slurmd.pid
+  SlurmdSpoolDir: /var/spool/slurm/d
+  StateSaveLocation: /var/spool/slurm/ctld
+  SwitchType: switch/none
+  TaskPlugin: task/affinity
+  # TIMERS
+  KillWait: 30
+  MinJobAge: 300
+  SlurmctldTimeout: 120
+  SlurmdTimeout: 300
+  # SCHEDULING
+  FastSchedule: 1
+  SchedulerType: sched/backfill
+  SelectType: select/cons_res
+  SelectTypeParameters: CR_Core
+  # LOGGING AND ACCOUNTING
+  AccountingStorageType: accounting_storage/filetxt
+  AccountingStorageLoc: /var/log/slurm/accounting.log
+  ClusterName: MACC
+  JobAcctGatherFrequency: 30
+  JobAcctGatherType: jobacct_gather/linux
+  JobCompType: jobcomp/filetxt
+  # JobCompLoc: /var/log/slurm/jobcomp.log
+  SlurmctldDebug: debug
+  SlurmctldLogFile: /var/log/slurm/slurmctld.log
+  # SlurmdDebug: debug
+  SlurmdLogFile: /var/log/slurm/slurmd.log
+  # COMPUTE NODES
+  NodeName: 'node-01 Sockets=2 CoresPerSocket=8 ThreadsPerCore=1 State=UNKNOWN'
+  PartitionName: 'debug Nodes=node-01 Default=YES MaxTime=60 State=UP'
+
+slurm_config_override: {}
