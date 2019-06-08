@@ -1,0 +1,54 @@
+---
+
+- name: install OpenHPC repository
+  yum:
+    name: "https://github.com/openhpc/ohpc/releases/download/v{{ slurm_ohpc_version }}.GA/ohpc-release-{{ slurm_ohpc_version }}-1.el7.x86_64.rpm"
+  tags: slurm
+
+- name: install packages
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - slurm-slurmd-ohpc
+      - slurm-example-configs-ohpc
+      - mailx
+  tags: slurm
+
+- name: create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ slurm_user }}"
+    group: "{{ slurm_group }}"
+  loop:
+    - "{{ slurm_logdir }}"
+  tags: slurm
+
+- name: copy Slurm configuration
+  template:
+    src: slurm.conf
+    dest: /etc/slurm/slurm.conf
+    owner: "{{ slurm_user }}"
+    group: "{{ slurm_group }}"
+    mode: 0600
+  notify: restart slurmd
+  tags: slurm
+
+- name: copy cgroup configuration
+  template:
+    src: cgroup.conf
+    dest: /etc/slurm/cgroup.conf
+    owner: "{{ slurm_user }}"
+    group: "{{ slurm_group }}"
+    mode: 0600
+  notify: restart slurmd
+  tags: slurm
+
+- name: start Slurm service
+  service:
+    name: slurmd
+    state: started
+    enabled: yes
+  tags: slurm
