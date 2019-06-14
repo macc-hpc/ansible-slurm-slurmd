@@ -5,6 +5,9 @@ slurm_logdir: /var/log/slurm
 slurm_user: slurm
 slurm_group: slurm
 
+slurm_nodes: []
+slurm_partitions: []
+
 slurm_config:
   AuthType: auth/munge
   SlurmctldHost: instance
@@ -40,8 +43,5 @@ slurm_config:
   SlurmctldLogFile: /var/log/slurm/slurmctld.log
   # SlurmdDebug: debug
   SlurmdLogFile: /var/log/slurm/slurmd.log
-  # COMPUTE NODES
-  NodeName: 'node-01 Sockets=2 CoresPerSocket=8 ThreadsPerCore=1 State=UNKNOWN'
-  PartitionName: 'debug Nodes=node-01 Default=YES MaxTime=60 State=UP'
 
 slurm_config_override: {}
