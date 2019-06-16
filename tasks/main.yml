@@ -46,14 +46,6 @@
   notify: restart slurmd
   tags: slurm
 
-- name: set memlock to unlimited
-  pam_limits:
-    domain: '*'
-    limit_type: '-'
-    limit_item: memlock
-    value: unlimited
-  tags: slurm
-
 - name: start Slurm service
   service:
     name: slurmd
