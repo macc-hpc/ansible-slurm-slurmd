@@ -7,6 +7,7 @@ slurm_group: slurm
 
 slurm_nodes: []
 slurm_partitions: []
+slurm_cgroup: {}
 
 slurm_config:
   AuthType: auth/munge
@@ -45,3 +46,4 @@ slurm_config:
   SlurmdLogFile: /var/log/slurm/slurmd.log
 
 slurm_config_override: {}
+slurm_cgroup_override: {}
