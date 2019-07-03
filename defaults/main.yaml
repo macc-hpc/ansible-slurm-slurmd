@@ -1,6 +1,6 @@
 ---
 
-slurm_ohpc_version: https://bootler.lsd.di.uminho.pt/ohpc-release-1.3-1.el7.x86_64.rpm
+slurm_ohpc_version: https://github.com/openhpc/ohpc/releases/download/v1.3.GA/ohpc-release-1.3-1.el7.x86_64.rpm
 slurm_logdir: /var/log/slurm
 slurm_user: slurm
 slurm_group: slurm
