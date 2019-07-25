@@ -30,8 +30,8 @@ slurm_config:
   # SCHEDULING
   FastSchedule: 1
   SchedulerType: sched/backfill
-  SelectType: select/cons_res
-  SelectTypeParameters: CR_Core
+  SelectType: select/linear
+  # SelectTypeParameters: CR_Core
   # LOGGING AND ACCOUNTING
   AccountingStorageType: accounting_storage/filetxt
   AccountingStorageLoc: /var/log/slurm/accounting.log
